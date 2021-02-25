@@ -1,0 +1,21 @@
+
+ <div class="input-group mb-2 w-75">
+     <input type="text" class="form-control" [formControl]="search" placeholder="Search...">
+   </div>
+ <div class="row p-3 lst-height mb-5">
+     <div class="col-sm-" *ngFor="let i of subList"><p (click)="sendMsg(i.title)" class='prompt-btn'>{{i.title}}</p></div>
+ </div>
+
+
+ <!-- <div class="input-group ">
+  <div class="form-outline">
+    <input id="search-focus" type="search" id="form1" class="form-control" />
+    <label class="form-label" for="search">Search</label>
+  </div>
+  <button type="button" class="btn btn-primary">
+    <i class="fas fa-search"></i>
+  </button>
+  <div class="row p-3 lst-height mb-5">
+    <div class="col-sm-" *ngFor="let i of subList"><p (click)="sendMsg(i.title)" class='prompt-btn'>{{i.title}}</p></div>
+</div>
+</div> -->

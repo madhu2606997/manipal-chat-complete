@@ -1,0 +1,10 @@
+
+ <!-- <div class="row prompt-suggestions p-2" >
+    <p class='prompt-btn' (click)="sendMsg(i.title)" *ngFor="let i of list.queryResult.fulfillmentMessages[1].suggestions.suggestions">{{i.title}}</p>
+</div> -->
+
+<div  *ngFor="let i of list.queryResult.fulfillmentMessages">
+    <div class="row prompt-suggestions p-2" *ngFor="let j of i | keyvalue">
+        <p class='prompt-btn' (click)="sendMsg(k.value.title)" *ngFor="let k of j.value.suggestions | keyvalue">{{k.value.title}}</p>
+    </div>
+ </div>

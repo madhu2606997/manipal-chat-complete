@@ -1,0 +1,104 @@
+<router-outlet></router-outlet>
+<div class="chat-box" *ngIf="showC">
+    <!-- chat head -->
+    <div class="header">
+        <div class="row">
+            <div class="col-sm-3">
+
+                <img src="../assets/logo.png" alt="" srcset="" class="w-75" style="width: 60%;">
+            </div>
+            <div class="col-sm-6 cust-header">
+                <span class="hsp">Manipal Hospitals</span><br>
+                <span class="online">Online</span>
+              
+            </div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-1">
+                <button type="button" *ngIf="showC" (click)="showC = !showC;MainC = !MainC" class="close" aria-label="Close" >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+        </div>
+       
+    </div>
+    <!-- chat head -->
+    <!-- chat body -->
+    <div class="chat-room" #scrollMe  id="chat-room">
+        <div  class="msg-lst" *ngFor="let i of Allmsg">
+            <!-- {{i |json}} -->
+            <div *ngIf="i.type=='bot'">
+            <div class="message message-left" >
+                
+                <div *ngFor="let type of i.components">
+                    <div *ngIf="type == 'simpleResponses'" >
+                        <app-simpleresponse [list] = "i.response"></app-simpleresponse>
+                    </div>
+                    <div *ngIf="type == 'listSelect'">
+                        <app-list [list] = "i.response" (sendData)="getMsg($event)"></app-list>
+                    </div>
+                    <div *ngIf="type == 'suggestions'">
+                        <app-suggestionchips [list] = "i.response" (sendData)="getMsg($event)"></app-suggestionchips>
+                    </div>
+                    <div *ngIf="type == 'carouselSelect'">
+                        <app-carousel [list] = "i.response" (sendData)="getMsg($event)"></app-carousel>
+                    </div>
+                    <div *ngIf="type == 'text'">
+                        <app-botmsg [list] = "i.response" ></app-botmsg>
+                    </div>
+                    
+                </div>
+                <p class="chat-time"></p>
+                <!-- <app-carousel></app-carousel> -->
+            </div>
+        </div>
+        <div *ngIf="i.type=='user'">
+            <div class="message message-right" >
+                <div class="bubble bubble-dark">
+                    {{i.msg}}
+                </div>
+                <p class="chat-time"></p>
+            </div>
+            </div>
+        </div>
+        <div id="view"></div>
+    </div>
+    <!-- chat body -->
+    <!-- type area -->
+    <div>
+        <form [formGroup]="msgInput" (submit)="sendMsg()" >
+            <div class="type-area">
+                <i style="margin-top: 21px;
+                width: 14px;
+                margin-left: 16px;"(click)="getMsg('Menu')" class="fa fa-bars" aria-hidden="true"></i>
+                <input type="text" autocomplete="off"  formControlName="inputMsg" id="inputText" class="input-text"
+                    placeholder="Type messages here..." />
+                <button type="submit" class="button-send"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+            </div>
+        </form>
+    </div>
+    <!-- type area -->
+</div>
+<!-- pop area -->
+<div class="pop-toggle">
+</div>
+<!-- pop area -->
+
+
+
+
+<!-- 
+<div class="initpop">
+<div class="ini-buble">
+    <p>Namaste, welcome to Manipal Hospitals. I am your personal assistant. Please select a language to proceed:</p>
+</div>
+<div class="row prompt-suggestions pt-2">
+    <p class='prompt-btn'>English</p><p class='prompt-btn'>Hindi / हिंदी</p><p class='prompt-btn'>Kannada / ಕನ್ನಡ</p><p class='prompt-btn'>Telugu / తెలుగు</p><p class='prompt-btn'>Tamil / தமி</p><p class='prompt-btn'>Malayalam / മലയാളം</p><p class='prompt-btn'>Bangla / বাংলা</p>
+</div>
+<div class="prompt-logo">
+    <img class='logo-icon' src="../assets/logo.png" alt="" srcset="">
+</div>
+</div> -->
+<div class="chatbot" *ngIf="MainC" (click)="showC = !showC;MainC = !MainC">
+    <img class="img_logo" style="    border-radius: 8px;
+    width: 44px;" src="..\assets\logo.png">
+</div>

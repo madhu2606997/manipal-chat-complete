@@ -1,0 +1,10 @@
+<div  *ngFor="let i of list.queryResult | keyvalue">
+    <div class="bubble bubble-light" *ngIf="i.key =='fulfillmentText'">
+        {{list.queryResult.fulfillmentText}}
+    </div>
+</div>
+<!-- <div *ngIf="list.queryResult">
+    <div class="bubble bubble-light" >
+    {{list.queryResult.fulfillmentText}}
+</div>
+</div> -->

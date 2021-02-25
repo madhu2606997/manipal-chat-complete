@@ -1,0 +1,10 @@
+<!-- <div class="bubble bubble-light" *ngFor="let i of list.queryResult.fulfillmentMessages[0].simpleResponses | keyvalue">
+    <span *ngFor="let j of i.value">{{j.textToSpeech}}</span>
+ </div> -->
+
+
+ <div  *ngFor="let i of list.queryResult.fulfillmentMessages">
+    <div *ngFor="let j of i | keyvalue">
+        <div class="bubble bubble-light" *ngFor="let k of j.value.simpleResponses | keyvalue">{{k.value.textToSpeech }}</div>
+    </div>
+ </div>
