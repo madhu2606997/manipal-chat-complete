@@ -63,10 +63,10 @@ body {
   background-color: #fff;
 }
 
-input.form-control.ng-pristine.ng-valid.ng-touched {
+/* input.form-control.ng-pristine.ng-valid.ng-touched {
 
   border-radius: 26px;
-}
+} */
 
 .chat-box {
   /* display: none; */
@@ -89,7 +89,7 @@ input.form-control.ng-pristine.ng-valid.ng-touched {
 }
 
 .hsp {
-  margin-left: -3px;
+  margin-left: 5px;
   font-size: 16px;
   padding-top: 1%;
   font-weight: bold;
@@ -97,7 +97,7 @@ input.form-control.ng-pristine.ng-valid.ng-touched {
   display: inline-flex;
 }
 .online {
-  margin-left: -3px;
+  margin-left: 5px;
   font-size: 14px;
   padding-top: 1%;
   /* font-weight: bold; */
@@ -479,7 +479,6 @@ padding: 8px;
     overflow-y: scroll;
    
 }
-
 
 /*mediaquires*/
 @media only screen and (max-width: 600px) {
