@@ -1,3 +1,3 @@
 <!-- <input type="date" class="form-control"  data-date-inline-picker="true"  > -->
 
-<ngb-datepicker [(ngModel)]="model" [minDate]="minDate" [maxDate]="maxDate" ngbDatepicker ></ngb-datepicker>
+<ngb-datepicker [(ngModel)]="model" (ngModelChange)="select(model)" [minDate]="minDate" [maxDate]="maxDate" ngbDatepicker ></ngb-datepicker>

@@ -1,6 +1,7 @@
 import { Component, OnInit,ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ChatService } from './service/chat.service';
+import {NgxAutoScroll} from "ngx-auto-scroll";
 
 @Component({
   selector: 'app-root',
@@ -16,8 +17,12 @@ export class AppComponent implements OnInit  {
   Usermsg = []
   Allmsg = []
   input = new FormControl('')
-  @ViewChild('scrollMe') private myScrollContainer: ElementRef;
+  @ViewChild(NgxAutoScroll) ngxAutoScroll: NgxAutoScroll;
+  
+  public forceScrollDown(): void {
 
+    this.ngxAutoScroll.forceScrollDown();
+}
  
 msgInput = new FormGroup({
   inputMsg: new FormControl('', Validators.required),
@@ -39,6 +44,7 @@ ngOnInit(){
   
 
 }
+
 
 
 getMsg(val) {
@@ -92,9 +98,11 @@ scrollToBottom = () => {
   try
   {
     
-    this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
-    console.log( this.myScrollContainer.nativeElement.scrollTop)
-    console.log( this.myScrollContainer.nativeElement.scrollHeight)
+    // this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+    // console.log( this.myScrollContainer.nativeElement.scrollTop)
+    // console.log( this.myScrollContainer.nativeElement.scrollHeight)
+    var container = document.getElementById("msgContainer");    
+    container.scrollTop = container.scrollHeight; 
   } catch (err) {}
 }
 

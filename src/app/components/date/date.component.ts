@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 import { FormControl,FormGroup } from '@angular/forms';
 
@@ -12,7 +12,7 @@ export class DateComponent implements OnInit {
   minDate
   maxDate
   current = new Date();
-  
+  @Output() sendTime: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
@@ -27,6 +27,10 @@ export class DateComponent implements OnInit {
       month: this.current.getMonth() + 4,
       day: this.current.getDate()
     };
+  }
+
+  select(model){  
+    this.sendTime.emit(model);
   }
 
 }

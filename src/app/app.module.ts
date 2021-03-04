@@ -14,6 +14,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { SuggestionchipsComponent } from './components/suggestionchips/suggestionchips.component';
 import { SimpleresponseComponent } from './components/simpleresponse/simpleresponse.component';
+import {NgxAutoScrollModule} from "ngx-auto-scroll";
+import { LinkoutComponent } from './components/linkout/linkout.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { SimpleresponseComponent } from './components/simpleresponse/simplerespo
     DateComponent,
     CarouselComponent,
     SuggestionchipsComponent,
-    SimpleresponseComponent
+    SimpleresponseComponent,
+    LinkoutComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { SimpleresponseComponent } from './components/simpleresponse/simplerespo
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    NgxAutoScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

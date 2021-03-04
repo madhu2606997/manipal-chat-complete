@@ -1,0 +1,10 @@
+.contact{
+    background: #eff6fc;
+    border-radius: 20px 20px 20px 20px;
+    width: 100%;
+    overflow-y: unset;
+}
+
+.description{
+    padding-left: 18px;
+}

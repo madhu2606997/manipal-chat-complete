@@ -1,11 +1,18 @@
 
- <div class="input-group mb-2 w-75">
+ <div class="input-group mb-2 w-75" *ngIf="list.queryResult.intent.displayName.indexOf('ontact') == -1">
      <input type="text" class="form-control" [formControl]="search" placeholder="Search...">
    </div>
- <div class="row p-3 lst-height mb-5">
+ <div class="row p-3 lst-height mb-5" *ngIf="list.queryResult.intent.displayName.indexOf('ontact') == -1">
      <div class="col-sm-" *ngFor="let i of subList"><p (click)="sendMsg(i.title)" class='prompt-btn'>{{i.title}}</p></div>
  </div>
-
+ 
+ <div class="row p-3 lst-height mb-5 contact" *ngIf="list.queryResult.intent.displayName.indexOf('ontact') != -1">
+  <div class="col-sm-12" *ngFor="let i of subList" >
+      <span (click)="sendMsg(i.description)" ><img [src]="i.image.imageUri" alt="">&nbsp;&nbsp;{{i.title}} </span><br>
+      <span (click)="sendMsg(i.description)" class="description" >&nbsp;&nbsp;&nbsp;&nbsp; {{i.description}} </span><br>
+      <hr>
+  </div>
+</div>
 
  <!-- <div class="input-group ">
   <div class="form-outline">

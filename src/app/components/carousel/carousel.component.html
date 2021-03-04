@@ -2,9 +2,10 @@
       <ng-template ngbSlide *ngFor="let k of mainList"  >
       <div  class="picsum-img-wrapper">
           <img class='w-100' [src]='k.image.imageUri' alt="Random first slide">
-          <button class='btn doc-name w-100'>{{k.title}}</button>
-          <button class='btn doc-name w-100'>{{k.description}}</button>
-          <button class='btn btn-bkapt  w-100' (click)="sendMsg(k.info.key)">Book an appointment</button>
+          <button class='btn doc-name w-100' (click)="sendMsg(k.info.key)">{{k.title}}</button>
+          <button *ngIf="list.queryResult.intent.displayName.indexOf('package') == -1" class='btn doc-name w-100'>{{k.description}}</button>
+          <button *ngIf="list.queryResult.intent.displayName.indexOf('package') == -1" class='btn btn-bkapt  w-100' (click)="sendMsg(k.info.key)">Book an appointment</button>
+          <button *ngIf="list.queryResult.intent.displayName.indexOf('package') != -1" class='btn btn-bkapt  w-100' (click)="sendMsg(k.info.key)">Click to proceed</button>
         </div>
       </ng-template>
   </ngb-carousel>

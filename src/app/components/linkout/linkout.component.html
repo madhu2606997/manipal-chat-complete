@@ -1,0 +1,14 @@
+<div *ngFor="let i of list.queryResult.fulfillmentMessages">
+    <div class="row prompt-suggestions p-2" *ngFor="let j of i | keyvalue">
+        <div *ngIf="j.key =='linkOutSuggestion' ">
+            <a href={{j.value.uri}} target="_blank" class='prompt-btn'>
+
+                
+                {{j.value.destinationName}}
+
+            </a>
+        </div>
+
+    </div>
+
+</div>
