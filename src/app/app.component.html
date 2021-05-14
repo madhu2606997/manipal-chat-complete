@@ -99,7 +99,11 @@
 
 
 
-<div class="initpop" *ngIf="MainC">
+<div class="initpop" *ngIf="MainP && MainC">
+    <button type="button" (click)="MainP = !MainP"  class="close" aria-label="Close" >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    <br/>
     <div class="ini-buble">
         <p>Namaste, welcome to Manipal Hospitals. I am your personal assistant. Please select a language to proceed:</p>
         

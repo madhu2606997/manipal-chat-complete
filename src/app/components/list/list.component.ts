@@ -14,6 +14,7 @@ export class ListComponent implements OnInit {
   search = new FormControl('');
   mainList = []
   subList = []
+  nosearch = ['GQ_detail','ontact']
   constructor() { }
 
   ngOnInit(): void {

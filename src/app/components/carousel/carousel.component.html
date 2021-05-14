@@ -4,8 +4,9 @@
           <img class='w-100' [src]='k.image.imageUri' alt="Random first slide">
           <button class='btn doc-name w-100' (click)="sendMsg(k.info.key)">{{k.title}}</button>
           <button *ngIf="list.queryResult.intent.displayName.indexOf('package') == -1" class='btn doc-name w-100'>{{k.description}}</button>
-          <button *ngIf="list.queryResult.intent.displayName.indexOf('package') == -1" class='btn btn-bkapt  w-100' (click)="sendMsg(k.info.key)">Book an appointment</button>
-          <button *ngIf="list.queryResult.intent.displayName.indexOf('package') != -1" class='btn btn-bkapt  w-100' (click)="sendMsg(k.info.key)">Click to proceed</button>
+          <button *ngIf="list.queryResult.intent.displayName.indexOf('package') == -1" class='btn btn-bkapt  w-100' (click)="sendMsg(k.info.key)">Hospital Visit</button>
+          <button *ngIf="list.queryResult.intent.displayName.indexOf('package') == -1" class='btn btn-bkapt mt-1 pt-1 w-100' (click)="sendMsg(k.info.key+'-vc')">Video Consultation</button>
+          <button *ngIf="list.queryResult.intent.displayName.indexOf('package') != -1" class='btn btn-bkapt   w-100' (click)="sendMsg(k.info.key)">Click to proceed</button>
         </div>
       </ng-template>
   </ngb-carousel>

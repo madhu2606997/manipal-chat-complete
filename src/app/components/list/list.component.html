@@ -1,10 +1,12 @@
 
- <div class="input-group mb-2 w-75" *ngIf="list.queryResult.intent.displayName.indexOf('ontact') == -1">
+ <div class="input-group mb-2 w-75" *ngIf="list.queryResult.intent.displayName.indexOf('ontact') == -1 && list.queryResult.intent.displayName.indexOf('GQ_detail') == -1 && list.queryResult.intent.displayName.indexOf('slots-time') == -1 ">
      <input type="text" class="form-control" [formControl]="search" placeholder="Search...">
    </div>
- <div class="row p-3 lst-height mb-5" *ngIf="list.queryResult.intent.displayName.indexOf('ontact') == -1">
+ <div class="row p-3 lst-height mb-5" *ngIf="list.queryResult.intent.displayName.indexOf('ontact') == -1 ">
      <div class="col-sm-" *ngFor="let i of subList"><p (click)="sendMsg(i.title)" class='prompt-btn'>{{i.title}}</p></div>
  </div>
+
+ 
  
  <div class="row p-3 lst-height mb-5 contact" *ngIf="list.queryResult.intent.displayName.indexOf('ontact') != -1">
   <div class="col-sm-12" *ngFor="let i of subList" >

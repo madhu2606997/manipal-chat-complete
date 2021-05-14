@@ -11,8 +11,10 @@ import {NgxAutoScroll} from "ngx-auto-scroll";
   
 export class AppComponent implements OnInit  {
   title = 'chatbot';
+  session = this.getUniqueId(4)
   showC = false
   MainC = true
+  MainP = false
   Mainmsg = []
   Usermsg = []
   Allmsg = []
@@ -32,16 +34,20 @@ msgInput = new FormGroup({
   constructor(private chat:ChatService){
 
   }
-ngOnInit(){
-  this.chat.getIntent('hi').subscribe(res=>{
+ngOnInit(){ 
+  
+  this.chat.getIntent('hi',this.session).subscribe(res=>{
       console.log(res)
       this.Mainmsg.push(res);
       res['type'] = 'bot'
     this.Allmsg.push(res);
     this.scrollToBottom()
+    console.log(this.Allmsg);
    
   }) 
-  
+  setTimeout(() => {
+    this.MainP= true
+  }, 2000);
 
 }
 
@@ -60,22 +66,33 @@ getMsg(val) {
   this.scrollToBottom();
   
  
-  this.chat.getIntent(val).subscribe(res=>{
+  this.chat.getIntent(val,this.session).subscribe(res=>{
     console.log(res);
     this.Mainmsg.push(res);
     res['type'] = 'bot'
     this.Allmsg.push(res);
     this.scrollToBottom();
+    console.log(this.Allmsg);
    
   })
 
 
 }
 
+getUniqueId(parts){
+  const stringArr = [];
+  for(let i = 0; i< parts; i++){
+    // tslint:disable-next-line:no-bitwise
+    const S4 = (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    stringArr.push(S4);
+  }
+  return stringArr.join('-');
+}
   
 sendMsg(){
   let msg = this.msgInput.value.inputMsg;
-  let t = {
+  if(msg != ''){
+    let t = {
       msg :msg,
       'type':'user'
   }
@@ -83,15 +100,17 @@ sendMsg(){
   this.Allmsg.push(t);
   this.scrollToBottom();
  
-  this.chat.getIntent(msg).subscribe(res=>{
+  this.chat.getIntent(msg,this.session).subscribe(res=>{
     console.log(res);
     this.Mainmsg.push(res);
     res['type'] = 'bot'
     this.Allmsg.push(res);
     this.scrollToBottom();
-     
+    console.log(this.Allmsg);
     this.msgInput.reset();
   })
+  }
+ 
 }
   
 scrollToBottom = () => {
